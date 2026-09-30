@@ -60,4 +60,39 @@ struct ThemePackPluginTests {
     func themeMenuTitleIsLocalizedInChinese() {
         #expect(ThemePackPlugin.localizedMenuName(locale: Locale(identifier: "zh-Hans")) == "主题")
     }
+
+    // MARK: - 可配置 id / order / policy
+
+    /// 默认配置与 Lumi 原版一致。
+    @Test("默认配置为 Lumi 标识与 required 策略")
+    func defaultConfigurationMatchesLumi() {
+        let plugin = ThemePackPlugin()
+        #expect(plugin.id == "com.coffic.lumi.plugin.theme-pack")
+        #expect(plugin.order == 100)
+        #expect(plugin.metadata.id == plugin.id)
+        #expect(plugin.metadata.policy == .required)
+        #expect(plugin.metadata.category == .design)
+    }
+
+    /// 宿主可传入自定义 id / order / policy（GitOK / Kuzee / Wakey / Netto 场景）。
+    @Test("自定义 id、order、policy 透传到实例与元数据")
+    func customConfigurationIsApplied() {
+        let plugin = ThemePackPlugin(
+            id: "com.example.custom.plugin.theme-pack",
+            order: 79,
+            policy: .enabledByDefault
+        )
+        #expect(plugin.id == "com.example.custom.plugin.theme-pack")
+        #expect(plugin.order == 79)
+        #expect(plugin.metadata.id == "com.example.custom.plugin.theme-pack")
+        #expect(plugin.metadata.policy == .enabledByDefault)
+    }
+
+    /// 元数据名称与描述走本地化（英文源存在）。
+    @Test("元数据文案已本地化")
+    func metadataIsLocalized() {
+        let plugin = ThemePackPlugin()
+        #expect(!plugin.metadata.name.isEmpty)
+        #expect(!plugin.metadata.description.isEmpty)
+    }
 }
