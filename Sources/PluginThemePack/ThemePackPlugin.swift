@@ -113,7 +113,8 @@ public final class ThemePackPlugin: SuperPlugin, SuperLog {
                     id: Self.settingsEntryID,
                     title: LumiPluginLocalization.string("Appearance", bundle: .module),
                     systemImage: "paintpalette",
-                    order: 2
+                    order: 2,
+                    group: Self.settingsGroup
                 ) {
                     ThemeSettingsDetailView(theme: theme)
                 },
@@ -134,6 +135,13 @@ public final class ThemePackPlugin: SuperPlugin, SuperLog {
     // MARK: - 私有
 
     private static let settingsEntryID = "appearance"
+
+    /// iOS 根页分组：外观。分组标题与入口标题共用同一份本地化文案。
+    private static let settingsGroup = SettingEntryGroup(
+        id: "appearance",
+        title: LumiPluginLocalization.string("Appearance", bundle: .module),
+        order: 10
+    )
 
     /// 菜单组 id 派生自插件 id，保证多实例/多应用互不冲突。
     private var commandGroupID: String { "\(id).theme.menu" }
