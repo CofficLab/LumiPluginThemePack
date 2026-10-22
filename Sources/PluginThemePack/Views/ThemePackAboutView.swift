@@ -7,8 +7,18 @@ import SwiftUI
 /// - macOS：保留落地页式的介绍版式（Hero + 能力网格 + 步骤流），适合桌面窗口的宽幅版面。
 /// - iOS：改为原生分组列表 —— 设置里不应出现 Hero banner 与特性网格，
 ///   改为「主题库 / 能力」两组说明行，与其余设置页保持一致。
+///
+/// `themeCount` 为实际生效的主题数量：宿主只加载部分主题时，
+/// 页面展示的数量随之收敛，而非固定为目录总数。
 struct ThemePackAboutView: View {
+    /// 实际生效的主题数量。
+    let themeCount: Int
+
     @LumiTheme private var theme
+
+    init(themeCount: Int = LumiThemeCatalog.all.count) {
+        self.themeCount = themeCount
+    }
 
     var body: some View {
         #if os(iOS)
@@ -28,7 +38,7 @@ struct ThemePackAboutView: View {
                 tagline: L("A look that feels like yours."),
                 chips: [L("Themes"), L("Light/Dark"), L("Accent")],
                 metrics: [
-                    .init(value: "\(LumiThemeCatalog.all.count)", label: L("themes")),
+                    .init(value: "\(themeCount)", label: L("themes")),
                     .init(value: "1", label: L("click to switch")),
                 ]
             )
@@ -68,7 +78,7 @@ struct ThemePackAboutView: View {
                 AppSettingSection(title: L("Theme Library")) {
                     AppSettingValueRow(
                         L("Themes"),
-                        value: "\(LumiThemeCatalog.all.count)"
+                        value: "\(themeCount)"
                     )
                 }
 

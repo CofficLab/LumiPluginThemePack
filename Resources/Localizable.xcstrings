@@ -478,30 +478,36 @@
         }
       }
     },
-    "Registers 19 legacy themes and provides an appearance switcher in settings.": {
+    "Registers %lld themes and provides an appearance switcher in settings.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Registers 19 legacy themes and provides an appearance switcher in settings."
+            "value": "Registers %lld themes and provides an appearance switcher in settings."
           }
         },
         "zh-HK": {
           "stringUnit": {
             "state": "translated",
-            "value": "批量註冊 19 個舊版主題，並在設定中提供外觀切換入口。"
+            "value": "批量註冊 %lld 個主題，並在設定中提供外觀切換入口。"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "批量注册 19 个旧版主题，并在设置中提供外观切换入口。"
+            "value": "批量注册 %lld 个主题，并在设置中提供外观切换入口。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "批量註冊 %lld 個主題，並在設定中提供外觀切換入口。"
           }
         },
         "zh-TW": {
           "stringUnit": {
             "state": "translated",
-            "value": "批量註冊 19 個舊版主題，並在設定中提供外觀切換入口。"
+            "value": "批量註冊 %lld 個主題，並在設定中提供外觀切換入口。"
           }
         }
       }
