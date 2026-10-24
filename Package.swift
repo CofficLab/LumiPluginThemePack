@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "PluginThemePack",
+    name: "LumiPluginThemePack",
     defaultLocalization: "en",
     platforms: [
         .macOS(.v14),
